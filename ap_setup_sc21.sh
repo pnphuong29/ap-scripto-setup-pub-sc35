@@ -37,10 +37,10 @@ time {
 	touch ~/.ssh/config
 
 	mkdir -p ~/secrets
-	touch ~/secrets/ap_pnphuong29.key.priv
+	touch ~/secrets/ap-p29.key.priv
 	chmod 600 ~/secrets/*
 
-	if [ ! -f ~/secrets/ap_pnphuong29.key.priv ]; then
+	if [ ! -f ~/secrets/ap-p29.key.priv ]; then
 		echo "You should configure [~/.ssh/config] file and add private key to clone repos"
 	else
 		export AP_GH_P29_DIR="${HOME}/scripto-data/projects/github.com/pnphuong29"

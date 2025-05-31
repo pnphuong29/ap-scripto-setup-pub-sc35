@@ -1,0 +1,62 @@
+@host=http://localhost:8080/api/v1
+@id=1
+
+###
+
+// Get all tasks
+GET /tasks
+
+###
+
+// Get task by ID
+GET /tasks/{{id}}
+
+###
+
+// Create new task
+POST /tasks
+{
+  "name": "Test task {{new Date().getTime()}}",
+  "description": "string",
+  "status": "string",
+  "priority": "string",
+  "due_date": "2023-10-01T00:00:00Z"
+}
+
+###
+
+// Update task
+PUT /tasks/{{id}}
+
+###
+
+// Delete task
+DELETE /tasks/{{id}}
+
+###
+
+// Add tag to task
+POST /tasks/{{id}}/tags
+{
+  "tags": ["123", "no place"]
+}
+
+###
+
+// Remove tag from task
+DELETE /tasks/{{id}}/tags/{{tag}}
+
+###
+
+// Search tasks by name
+GET /tasks/search?name=226
+
+###
+
+// Search tasks by description
+GET /tasks/search?description=Test
+
+###
+
+// Filter tasks
+GET /tasks/filter

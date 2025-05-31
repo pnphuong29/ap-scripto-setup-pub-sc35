@@ -1,0 +1,83 @@
+default_mode: "overwrite"
+default_exist: "overwrite"
+
+# GitHub Copilot instructions
+github-copilot:
+  instructions:
+    general.instructions.md:
+      dst_path: "${project_root}/.github/instructions/general.instructions.md"
+    bash.instructions.md:
+      dst_path: "${project_root}/.github/instructions/bash.instructions.md"
+    coding.instructions.md:
+      dst_path: "${project_root}/.github/instructions/coding.instructions.md"
+    project.instructions.md:
+      dst_path: "${project_root}/.github/instructions/project.instructions.md"
+      exist: skip
+    db.instructions.md:
+      dst_path: "${project_root}/.github/instructions/db.instructions.md"
+    testing.instructions.md:
+      dst_path: "${project_root}/.github/instructions/testing.instructions.md"
+    react-ts.instructions.md:
+      dst_path: "${project_root}/.github/instructions/react-ts.instructions.md"
+  prompts:
+    request.prompt.md:
+      dst_path: "${project_root}/.github/prompts/request.prompt.md"
+      mode: new
+      exist: skip
+  root:
+    copilot-instructions.md:
+      dst_path: "${project_root}/.github/copilot-instructions.md"
+
+# Config files
+configs:
+  tpl-config.yml:
+    dst_path: "${project_root}/configs/tpl-config.yml"
+    exist: skip
+
+# General project files
+general:
+  .gitignore:
+  .editorconfig:
+  .prettierignore:
+  prettier.config.js:
+  .env:
+    exist: skip
+  .env.sample:
+    exist: skip
+
+# Documentation files
+docs:
+  README.md:
+    dst_path: "${project_root}/README.md"
+    exist: skip
+  CHANGELOG.md:
+    dst_path: "${project_root}/CHANGELOG.md"
+    exist: skip
+  CHANGELOG.sample.md:
+    dst_path: "${project_root}/docs/CHANGELOG.sample.md"
+  LICENSE.md:
+    dst_path: "${project_root}/LICENSE.md"
+    variables:
+      copyright_year: "2025"
+      copyright_owner: "Albert Thawra"
+  memory.md:
+    dst_path: "${project_root}/docs/memory.md"
+    exist: skip
+  project-structure.md:
+    dst_path: "${project_root}/docs/project-structure.md"
+    exist: skip
+  project-structure.sample.md:
+    dst_path: "${project_root}/docs/project-structure.sample.md"
+
+# Script files
+scripts:
+  ap_init.sh:
+    dst_path: "${project_root}/scripts/ap_init.sh"
+    exist: skip
+
+# Test files
+tests:
+  api:
+    all.http:
+      dst_path: "${project_root}/tests/api/all.http"
+      exist: skip

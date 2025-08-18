@@ -37,57 +37,48 @@ time {
 	echo "Configuring ssh"
 	mkdir -p ~/.ssh
 	touch ~/.ssh/config
-	cat <<-EOF >~/.ssh/config
-		Host *
-		IdentityFile ~/secrets/ap_nidnos.key.priv
-	EOF
 
-	mkdir -p ~/secrets
-	touch ~/secrets/ap_nidnos.key.priv
-	chmod 600 ~/secrets/*
+	echo "Setting up git credential caching to clone repo sc108, sc1, sc28, sc49, sec2"
+	git config --global credential.helper store
 
-	if [ ! -f ~/secrets/ap_nidnos.key.priv ]; then
-		echo "You should configure [~/.ssh/config] file and add private key to clone repos"
-	else
-		export AP_GH_P29_DIR="${HOME}/scripto-data/projects/github.com/pnphuong29"
-		mkdir -p "${AP_GH_P29_DIR}"
+	export AP_GH_P29_DIR="${HOME}/scripto-data/projects/github.com/pnphuong29"
+	mkdir -p "${AP_GH_P29_DIR}"
 
-		# Projects to clone and symlink (parallel arrays)
-		repos=(
-			"ap-scripto-core-pub-sc108"
-			"ap-scripto-share-sc1"
-			"ap-scripto-common-sc28"
-			"ap-scripto-ubuntu-server-sc49"
-		)
+	# Projects to clone and symlink (parallel arrays)
+	repos=(
+		"ap-scripto-core-pub-sc108"
+		"ap-scripto-share-sc1"
+		"ap-scripto-common-sc28"
+		"ap-scripto-ubuntu-server-sc49"
+	)
 
-		symlinks=(
-			"scripto"
-			"scripto-share"
-			"scripto-common"
-			"scripto-main"
-		)
+	symlinks=(
+		"scripto"
+		"scripto-share"
+		"scripto-common"
+		"scripto-main"
+	)
 
-		for i in "${!repos[@]}"; do
-			repo="${repos[$i]}"
-			target_dir="${AP_GH_P29_DIR}/${repo}"
+	for i in "${!repos[@]}"; do
+		repo="${repos[$i]}"
+		target_dir="${AP_GH_P29_DIR}/${repo}"
 
-			cd "${AP_GH_P29_DIR}" || exit
-			echo "git clone [git@github.com:pnphuong29/${repo}.git]"
-			git clone "git@github.com:pnphuong29/${repo}.git"
+		cd "${AP_GH_P29_DIR}" || exit
+		echo "git clone [git@github.com:pnphuong29/${repo}.git]"
+		git clone "git@github.com:pnphuong29/${repo}.git"
 
-			rm -rf "${HOME:?}/${symlinks[$i]}"
-			ln -s "${target_dir}" "${HOME:?}/${symlinks[$i]}"
-		done
+		rm -rf "${HOME:?}/${symlinks[$i]}"
+		ln -s "${target_dir}" "${HOME:?}/${symlinks[$i]}"
+	done
 
-		# SEC2
-		cd "${AP_GH_P29_DIR}"
-		echo "git clone [git@github.com:pnphuong29/ap-secrets-sec2.git]"
-		git clone "git@github.com:pnphuong29/ap-secrets-sec2.git"
+	# SEC2
+	cd "${AP_GH_P29_DIR}"
+	echo "git clone [git@github.com:pnphuong29/ap-secrets-sec2.git]"
+	git clone "git@github.com:pnphuong29/ap-secrets-sec2.git"
 
-		# Update ~/.bashrc
-		if ! grep scripto-main ~/.bashrc &>/dev/null; then
-			echo "" >>~/.bashrc
-			cat "${HOME}/scripto-main/configs/.bashrc" >>~/.bashrc
-		fi
+	# Update ~/.bashrc
+	if ! grep scripto-main ~/.bashrc &>/dev/null; then
+		echo "" >>~/.bashrc
+		cat "${HOME}/scripto-main/configs/.bashrc" >>~/.bashrc
 	fi
 }

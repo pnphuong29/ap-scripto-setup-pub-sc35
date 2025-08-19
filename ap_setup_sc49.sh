@@ -64,8 +64,8 @@ time {
 		target_dir="${AP_GH_P29_DIR}/${repo}"
 
 		cd "${AP_GH_P29_DIR}" || exit
-		echo "git clone [git@github.com:pnphuong29/${repo}.git]"
-		git clone "git@github.com:pnphuong29/${repo}.git"
+		echo "git clone [https://github.com/pnphuong29/${repo}.git]"
+		git clone "https://github.com/pnphuong29/${repo}.git"
 
 		rm -rf "${HOME:?}/${symlinks[$i]}"
 		ln -s "${target_dir}" "${HOME:?}/${symlinks[$i]}"
@@ -73,8 +73,8 @@ time {
 
 	# SEC2
 	cd "${AP_GH_P29_DIR}"
-	echo "git clone [git@github.com:pnphuong29/ap-secrets-sec2.git]"
-	git clone "git@github.com:pnphuong29/ap-secrets-sec2.git"
+	echo "git clone [https://github.com/pnphuong29/ap-secrets-sec2.git]"
+	git clone "https://github.com/pnphuong29/ap-secrets-sec2.git"
 
 	# Update ~/.bashrc
 	if ! grep scripto-main ~/.bashrc &>/dev/null; then

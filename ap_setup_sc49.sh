@@ -38,7 +38,7 @@ time {
 	mkdir -p ~/.ssh
 	touch ~/.ssh/config
 
-	echo "Setting up git credential caching to clone repo sc108, sc1, sc28, sc49, sec2"
+	echo "Setting up git credential caching to clone repos"
 	git config --global credential.helper store
 
 	export AP_GH_P29_DIR="${HOME}/scripto-data/projects/github.com/pnphuong29"

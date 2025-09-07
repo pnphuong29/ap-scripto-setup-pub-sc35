@@ -11,8 +11,13 @@ time {
 
     # Configure ssh
     echo "Configuring ssh"
+    echo "Configuring ssh"
     mkdir -p ~/.ssh
+    touch ~/.ssh/authorized_keys # Input public key here
     touch ~/.ssh/config
+    chmod 700 ~/.ssh
+    chmod 600 ~/.ssh/authorized_keys
+    chmod 600 ~/.ssh/config
 
     mkdir -p ~/secrets
     touch ~/secrets/ap-p29.key.priv

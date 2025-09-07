@@ -1,0 +1,40 @@
+# https://editorconfig.org
+# Set to true to tell the core not to check any higher directory for EditorConfig settings for on the current filename.
+root = true
+
+[*]
+charset = utf-8
+# If indent_style is set to tab, indent_size is ignored (since tabs are used instead of spaces).
+# indent_style = tab
+indent_style = space
+# indent size determines how many spaces are inserted for each indentation level.
+indent_size = 4
+# tab_width defines the width of a tab character when displayed in the editor.
+# tab_width = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+# end_of_line = lf
+
+[*.{html,tsx,jsx,yaml,yml}]
+indent_size = 2
+
+# Markdown syntax specifies that trailing whitespaces can be meaningful,
+# so let’s not trim those. e.g. 2 trailing spaces = linebreak (<br />)
+# See https://daringfireball.net/projects/markdown/syntax#p
+[*.md]
+trim_trailing_whitespace = false
+indent_size = 2
+
+# Disable trailing whitespace removal in diff files,
+# where whitespace is meaningful
+[*.diff]
+trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
+
+[*.{tf,tfstate}]
+indent_size = 2
+
+[Vagrantfile]
+indent_size = 2

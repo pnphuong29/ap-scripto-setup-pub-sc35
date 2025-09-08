@@ -80,6 +80,11 @@ time {
     echo "git clone [https://github.com/pnphuong29/ap-secrets-sec2.git]"
     git clone "https://github.com/pnphuong29/ap-secrets-sec2.git"
 
+    # LIBCOM1
+    cd "${AP_GH_P29_DIR}"
+    echo "git clone [https://github.com/pnphuong29/ap-lib-common-libcom1.git]"
+    git clone "https://github.com/pnphuong29/ap-lib-common-libcom1.git"
+
     # Update ~/.bashrc
     if ! grep scripto-main ~/.bashrc &>/dev/null; then
         echo "" >>~/.bashrc
